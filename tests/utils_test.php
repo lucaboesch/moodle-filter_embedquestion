@@ -32,7 +32,7 @@ use core_question\local\bank\question_version_status;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers    \filter_embedquestion\utils
  */
-class utils_test extends \advanced_testcase {
+final class utils_test extends \advanced_testcase {
 
     public function test_get_category_by_idnumber(): void {
         $this->resetAfterTest();

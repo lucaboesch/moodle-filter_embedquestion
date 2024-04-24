@@ -25,7 +25,7 @@ namespace filter_embedquestion;
  * @covers    \filter_embedquestion\external
  * @runTestsInSeparateProcesses
  */
-class external_test extends \advanced_testcase {
+final class external_test extends \advanced_testcase {
 
     public function setUp(): void {
         global $SCRIPT;
