@@ -26,7 +26,7 @@ namespace filter_embedquestion;
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
 require_once($CFG->libdir . '/questionlib.php');
-require_once($CFG->dirroot . '/filter/embedquestion/filter.php');
+require_once($CFG->dirroot . '/filter/embedquestion/classes/text_filter.php');
 
 
 /**
@@ -196,6 +196,6 @@ class question_options extends \question_display_options {
         }
         $parts[] = token::make_secret_token($embedid);
 
-        return \filter_embedquestion::STRING_PREFIX . implode('|', $parts) . \filter_embedquestion::STRING_SUFFIX;
+        return text_filter::STRING_PREFIX . implode('|', $parts) . text_filter::STRING_SUFFIX;
     }
 }
