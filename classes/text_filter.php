@@ -56,6 +56,9 @@ class text_filter extends \core_filters\text_filter {
      */
     protected $page;
 
+    /**
+     * {inheritDocs}
+     */
     public function setup($page, $context) {
         $this->page = $page;
     }
@@ -71,6 +74,9 @@ class text_filter extends \core_filters\text_filter {
                 preg_quote(self::STRING_SUFFIX, '~') . '~';
     }
 
+    /**
+     * {inheritDocs}
+     */
     public function filter($text, array $options = []) {
         return preg_replace_callback(self::get_filter_regexp(),
                 [$this, 'embed_question_callback'], $text);
@@ -131,7 +137,7 @@ class text_filter extends \core_filters\text_filter {
      *
      * @return string HTML for the error.
      */
-    protected function display_error(string $string, array $a = null): string {
+    protected function display_error(string $string, ?array $a = null): string {
         return $this->renderer->render(new error_message(
                 get_string($string, 'filter_embedquestion', $a)));
     }

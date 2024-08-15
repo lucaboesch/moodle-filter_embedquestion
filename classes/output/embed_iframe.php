@@ -44,6 +44,12 @@ class embed_iframe implements \renderable, \templatable {
         $this->iframedescription = $iframedescription;
     }
 
+    /**
+     * Export this data so it can be used as the context for a mustache template.
+     *
+     * @param renderer_base $output
+     * @return stdClass
+     */
     public function export_for_template(renderer_base $output) {
         $data = [
             'showquestionurl' => $this->showquestionurl,

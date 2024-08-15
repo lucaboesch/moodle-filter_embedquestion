@@ -205,7 +205,7 @@ class attempt {
      * @param \question_usage_by_activity|null $quba usage to use. If null will continue using the same usage.
      */
     public function start_new_attempt_at_question(
-            \question_usage_by_activity $quba = null) {
+            ?\question_usage_by_activity $quba = null) {
         global $DB;
 
         if ($quba) {
@@ -386,7 +386,7 @@ class attempt {
      * @param array $simulatedpostdata for testing, simulated post data (e.g. from
      *      $quba->get_simulated_post_data_for_questions_in_usage()).
      */
-    public function process_submitted_actions(array $simulatedpostdata = null) {
+    public function process_submitted_actions(?array $simulatedpostdata = null) {
         global $DB;
 
         $this->quba->process_all_actions(null, $simulatedpostdata);

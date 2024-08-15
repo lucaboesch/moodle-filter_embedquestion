@@ -29,17 +29,30 @@ namespace filter_embedquestion\event;
  */
 class token_created extends \core\event\base {
 
+    /**
+     * Init method.
+     */
     protected function init() {
         $this->data['objecttable'] = 'question';
         $this->data['crud'] = 'c';
         $this->data['edulevel'] = self::LEVEL_TEACHING;
     }
 
+    /**
+     * Returns non-localised description of what happened.
+     *
+     * @return string
+     */
     public function get_description() {
         return "The user with id '$this->userid' created a token for embedded question " .
                 "'$this->objectid' in course '$this->courseid'.";
     }
 
+    /**
+     * Get objectid mapping.
+     *
+     * @return array
+     */
     public static function get_objectid_mapping() {
         return ['db' => 'question', 'restore' => 'question'];
     }

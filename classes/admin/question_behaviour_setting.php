@@ -29,6 +29,12 @@ use filter_embedquestion\utils;
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class question_behaviour_setting extends \admin_setting_configselect {
+
+    /**
+     * Load the choices.
+     *
+     * @return true
+     */
     public function load_choices() {
         if (is_array($this->choices)) {
             return true;
