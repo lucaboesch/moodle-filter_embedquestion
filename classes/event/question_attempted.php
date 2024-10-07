@@ -29,17 +29,30 @@ namespace filter_embedquestion\event;
  */
 class question_attempted extends \core\event\base {
 
+    /**
+     * Initialise the event.
+     */
     protected function init() {
         $this->data['objecttable'] = 'question';
         $this->data['crud'] = 'u';
         $this->data['edulevel'] = self::LEVEL_PARTICIPATING;
     }
 
+    /**
+     * Returns the description of the event.
+     *
+     * @return string
+     */
     public function get_description() {
         return "The user with id '$this->userid' has submitted data to the embedded question " .
                 "'$this->objectid' in course '$this->courseid'.";
     }
 
+    /**
+     * Get the object ID mapping.
+     *
+     * @return array
+     */
     public static function get_objectid_mapping() {
         return ['db' => 'question', 'restore' => 'question'];
     }

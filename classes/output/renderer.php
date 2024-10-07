@@ -25,9 +25,6 @@ use filter_embedquestion\utils;
  * @package   filter_embedquestion
  * @copyright 2018 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
- * @method string header() inherited from core_renderer.
- * @method string footer() inherited from core_renderer.
  */
 class renderer extends \plugin_renderer_base {
     /**

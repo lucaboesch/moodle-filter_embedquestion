@@ -38,6 +38,12 @@ class error_message implements \renderable, \templatable {
         $this->message = $message;
     }
 
+    /**
+     * Export this for use in a mustache template context
+     *
+     * @param renderer_base $output
+     * @return array
+     */
     public function export_for_template(renderer_base $output) {
         return ['message' => $this->message];
     }

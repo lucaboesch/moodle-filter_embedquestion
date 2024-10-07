@@ -37,10 +37,20 @@ class cleanup_task extends scheduled_task {
      */
     const MAX_AGE = 24 * 60 * 60;
 
+    /**
+     * Returns the name of the task.
+     *
+     * @return string
+     */
     public function get_name() {
         return get_string('taskcleanup', 'filter_embedquestion');
     }
 
+    /**
+     * Executes the task.
+     *
+     * @return void
+     */
     public function execute() {
         $lastmodifiedcutoff = time() - self::MAX_AGE;
 

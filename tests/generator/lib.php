@@ -39,6 +39,11 @@ class filter_embedquestion_generator extends component_generator_base {
      */
     protected static $uniqueid = 1;
 
+    /**
+     * Constructor
+     *
+     * @param testing_data_generator $datagenerator
+     */
     public function __construct(testing_data_generator $datagenerator) {
         parent::__construct($datagenerator);
         $this->questiongenerator = $this->datagenerator->get_plugin_generator('core_question');
@@ -58,9 +63,10 @@ class filter_embedquestion_generator extends component_generator_base {
      * @param array|null $overrides as for {@see core_question_generator::create_question()}.
      * @param array $categoryrecord as for {@see core_question_generator::create_question_category()}.
      * @return stdClass the data for the newly created question.
+     * @throws coding_exception
      */
-    public function create_embeddable_question(string $qtype, string $which = null,
-            array $overrides = null, array $categoryrecord = []): stdClass {
+    public function create_embeddable_question(string $qtype, ?string $which = null,
+            ?array $overrides = null, array $categoryrecord = []): stdClass {
 
         // Create the category, if one is not specified.
         if (!isset($overrides['category'])) {
@@ -150,16 +156,18 @@ class filter_embedquestion_generator extends component_generator_base {
      * @param stdClass $question the question to attempt.
      * @param stdClass $user the user making the attempt.
      * @param string $response Response to submit. (Sent to the
-     *      un_summarise_response method of the correspnoding question type).
-     * @param context|null $attemptcontext the context in which the attempt should be created.
-     * @param null $pagename Page name
+     *       un_summarise_response method of the correspnoding question type).
+     * @param \context|null $attemptcontext the context in which the attempt should be created.
+     * @param ?string $pagename Page name
      * @param int $slot Slot no
      * @param bool $isfinish Finish the attempt or not.
      * @return attempt the newly generated attempt.
+     * @throws coding_exception
+     * @throws dml_transaction_exception
      */
     public function create_attempt_at_embedded_question(stdClass $question,
-            stdClass $user, string $response, context $attemptcontext = null, $pagename = null, $slot = 1,
-            $isfinish = true): attempt {
+            stdClass $user, string $response, ?\context $attemptcontext = null, ?string $pagename = null, int $slot = 1,
+            bool $isfinish = true): attempt {
         global $USER, $CFG;
 
         [$embedid, $coursecontext] = $this->get_embed_id_and_context($question);

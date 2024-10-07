@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 namespace filter_embedquestion;
 
 /**
@@ -26,7 +25,7 @@ namespace filter_embedquestion;
  * @covers    \filter_embedquestion\attempt
  * @covers    \filter_embedquestion\attempt_storage
  */
-class attempt_test extends \advanced_testcase {
+final class attempt_test extends \advanced_testcase {
 
     public function test_start_new_attempt_at_question_will_select_an_unused_question(): void {
         global $DB, $USER;
